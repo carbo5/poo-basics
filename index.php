@@ -6,7 +6,7 @@ class ShopProduct{
     public $producerFirstName = "first name";
     public $price = 0;
 
-    public function __construct($title, $firstName, $mainName, $price){
+    public function __construct(string $title, string $firstName, string $mainName, float $price){
         $this->title = $title;
         $this->producerFirstName = $firstName;
         $this->producerMainName = $mainName;
@@ -18,8 +18,22 @@ class ShopProduct{
     }
 }
 
+class ShopProductWriter{
+    public function write(ShopProduct $shopProduct){
+        $str = $shopProduct->title . ": "
+                . $shopProduct->getProducer()
+                . " ( " . $shopProduct->price . " )";
+        print $str;        
+    }
+}
+
+
+
+
 $product1 = new ShopProduct("My Antonia", "Cather", "Willa", 5.99);
-//$product2 = new ShopProduct();
+$writer = new ShopProductWriter();
+
+$writer->write($product1);
 
 
 
@@ -29,5 +43,5 @@ $product1 = new ShopProduct("My Antonia", "Cather", "Willa", 5.99);
 
 //var_dump($product1);
 /*var_dump($product2);*/
-print "author:" . $product1->getProducer();
+//print "author:" . $product1->getProducer();
 
